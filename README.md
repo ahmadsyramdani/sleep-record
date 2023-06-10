@@ -1,24 +1,37 @@
-# README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Good Night Application
 
-Things you may want to cover:
 
-* Ruby version
 
-* System dependencies
 
-* Configuration
+## Installation
 
-* Database creation
+clone the project
 
-* Database initialization
+```bash
+  cd project-path
+  rake db:create && rake db:migrate
+  rake db:seed
+```
+    
+## Demo
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+`/api/login`
+```  
+  email: 'user1@test.com',
+  password: 'password'
+```
 
-* Deployment instructions
+### Test
 
-* ...
+`rspec spec/`
+## Documentation
+
+[Documentation API](https://documenter.getpostman.com/view/14589370/2s93sc4sbK)
+
+
+## Authors
+
+- Ahmad Ramdani
+
