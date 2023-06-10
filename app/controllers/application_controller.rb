@@ -26,12 +26,12 @@ class ApplicationController < ActionController::API
     }, status: :ok
   end
 
-  def render_empty_data(message)
-    render json: { message: "no records" }, status: :ok
+  def render_empty_data
+    render json: { data: [], message: "no records" }, status: :ok
   end
 
-  def render_success(message)
-    render json: { message: message }, status: :ok
+  def render_success(message, status=:ok)
+    render json: { message: message }, status: status
   end
 
   def render_error(message, status)

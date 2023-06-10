@@ -10,15 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_06_10_075749) do
+ActiveRecord::Schema.define(version: 2023_06_10_104036) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "relationships", force: :cascade do |t|
-    t.integer "follower_id", null: false
-    t.integer "following_id", null: false
+    t.bigint "follower_id", null: false
+    t.bigint "following_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["follower_id"], name: "index_relationships_on_follower_id"
     t.index ["following_id"], name: "index_relationships_on_following_id"
+  end
+
+  create_table "sleep_time_records", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.datetime "clock_in"
+    t.datetime "clock_out"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_sleep_time_records_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -32,4 +44,5 @@ ActiveRecord::Schema.define(version: 2023_06_10_075749) do
 
   add_foreign_key "relationships", "users", column: "follower_id"
   add_foreign_key "relationships", "users", column: "following_id"
+  add_foreign_key "sleep_time_records", "users"
 end

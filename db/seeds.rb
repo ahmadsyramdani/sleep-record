@@ -13,3 +13,19 @@
     password: 'password'
   )
 end
+
+users = User.all
+start_date = 2.weeks.ago.to_date
+end_date = Date.today
+
+users.each do |user|
+  (start_date..end_date).each do |date|
+    clock_in_time = date.beginning_of_day.change(hour: rand(19..23))
+    clock_out_time = clock_in_time + rand(5..10).hours
+
+    user.sleep_time_records.create!(
+      clock_in: clock_in_time,
+      clock_out: clock_out_time
+    )
+  end
+end

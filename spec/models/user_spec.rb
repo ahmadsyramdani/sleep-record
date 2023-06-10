@@ -6,6 +6,7 @@ RSpec.describe User, type: :model do
     it { should have_many(:followers).through(:follower_relationships) }
     it { should have_many(:following_relationships).dependent(:destroy) }
     it { should have_many(:followings).through(:following_relationships) }
+    it { should have_many(:sleep_time_records) }
   end
 
   describe 'validations' do
