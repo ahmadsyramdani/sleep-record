@@ -18,4 +18,23 @@ class ApplicationController < ActionController::API
     header = request.headers['Authorization']
     header.gsub(pattern, '') if header&.match(pattern)
   end
+
+  def render_data(data, message)
+    render json: {
+      message: message,
+      data: data
+    }, status: :ok
+  end
+
+  def render_empty_data(message)
+    render json: { message: "no records" }, status: :ok
+  end
+
+  def render_success(message)
+    render json: { message: message }, status: :ok
+  end
+
+  def render_error(message, status)
+    render json: { message: message }, status: status
+  end
 end

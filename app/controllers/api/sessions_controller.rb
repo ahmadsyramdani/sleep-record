@@ -25,12 +25,4 @@ class Api::SessionsController < ApplicationController
       message: 'Logged in successfully.'
     }, status: :ok
   end
-
-  def render_success(message)
-    render json: { message: message }, status: :ok
-  end
-
-  def render_error(message, status)
-    render json: { message: message }, status: status
-  end
 end

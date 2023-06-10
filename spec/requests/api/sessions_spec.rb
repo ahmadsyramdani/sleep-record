@@ -4,7 +4,7 @@ require 'rails_helper'
 
 RSpec.describe Api::SessionsController, type: :controller do
   describe 'POST #create' do
-    let!(:user) { User.create(email: 'test@example.com', password: 'password') }
+    let!(:user) { User.create(name: 'Test', email: 'test@example.com', password: 'password') }
 
     context 'with valid credentials' do
       it 'generates a new API key for the user and returns success response' do
@@ -32,7 +32,7 @@ RSpec.describe Api::SessionsController, type: :controller do
   end
 
   describe 'DELETE #destroy' do
-    let!(:user) { User.create(email: 'test@example.com', password: 'password') }
+    let!(:user) { User.create(name: 'Test', email: 'test@example.com', password: 'password') }
 
     before do
       user.generate_api_key
